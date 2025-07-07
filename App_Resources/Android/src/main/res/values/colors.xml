@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ns_primary">#1e3a8a</color>
+    <color name="ns_primaryDark">#0f172a</color>
+    <color name="ns_accent">#3b82f6</color>
+    <color name="ns_blue">#1e3a8a</color>
+</resources>

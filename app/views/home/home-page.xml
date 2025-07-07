@@ -1,0 +1,62 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="app-root">
+  <ScrollView>
+    <StackLayout>
+      
+      <!-- Hero Section -->
+      <StackLayout class="hero-section" visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+        <Image src="{{ featuredContent.backdrop_path }}" class="hero-image" stretch="aspectFill" />
+        <StackLayout class="hero-overlay">
+          <Label text="{{ featuredContent.title || featuredContent.name }}" class="hero-title" />
+          <Label text="{{ featuredContent.overview }}" class="hero-description" maxLines="3" />
+          <StackLayout orientation="horizontal" class="hero-buttons">
+            <Button text="▶ Play" tap="onPlayTap" class="primary-button" />
+            <Button text="+ My List" tap="onAddToListTap" class="secondary-button" />
+          </StackLayout>
+        </StackLayout>
+      </StackLayout>
+
+      <!-- Loading Indicator -->
+      <ActivityIndicator busy="{{ isLoading }}" class="loading-container" />
+
+      <!-- Popular Movies -->
+      <StackLayout visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+        <Label text="Popular Movies" class="subsection-header" />
+        <CollectionView items="{{ popularMovies }}" orientation="horizontal" class="horizontal-list">
+          <CollectionView.itemTemplate>
+            <StackLayout class="content-card" tap="onMovieItemTap">
+              <Image src="{{ poster_path }}" class="poster-image" stretch="aspectFill" />
+              <Label text="{{ title }}" class="item-title" maxLines="2" />
+            </StackLayout>
+          </CollectionView.itemTemplate>
+        </CollectionView>
+      </StackLayout>
+
+      <!-- Top Rated Movies -->
+      <StackLayout visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+        <Label text="Top Rated Movies" class="subsection-header" />
+        <CollectionView items="{{ topRatedMovies }}" orientation="horizontal" class="horizontal-list">
+          <CollectionView.itemTemplate>
+            <StackLayout class="content-card" tap="onMovieItemTap">
+              <Image src="{{ poster_path }}" class="poster-image" stretch="aspectFill" />
+              <Label text="{{ title }}" class="item-title" maxLines="2" />
+            </StackLayout>
+          </CollectionView.itemTemplate>
+        </CollectionView>
+      </StackLayout>
+
+      <!-- Popular TV Shows -->
+      <StackLayout visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+        <Label text="Popular TV Shows" class="subsection-header" />
+        <CollectionView items="{{ popularTVShows }}" orientation="horizontal" class="horizontal-list">
+          <CollectionView.itemTemplate>
+            <StackLayout class="content-card" tap="onTVShowItemTap">
+              <Image src="{{ poster_path }}" class="poster-image" stretch="aspectFill" />
+              <Label text="{{ name }}" class="item-title" maxLines="2" />
+            </StackLayout>
+          </CollectionView.itemTemplate>
+        </CollectionView>
+      </StackLayout>
+
+    </StackLayout>
+  </ScrollView>
+</Page>

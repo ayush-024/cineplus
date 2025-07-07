@@ -1,0 +1,31 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="app-root">
+  <GridLayout rows="*, auto">
+    
+    <!-- Content Area -->
+    <Frame row="0" id="contentFrame" defaultPage="views/home/home-page" />
+    
+    <!-- Bottom Navigation -->
+    <GridLayout row="1" columns="*, *, *, *" class="bottom-nav">
+      <StackLayout col="0" tap="onHomeTap" class="nav-item {{ currentPage === 'home' ? 'active' : '' }}">
+        <Label text="🏠" class="nav-icon" />
+        <Label text="Home" class="nav-label" />
+      </StackLayout>
+      
+      <StackLayout col="1" tap="onMoviesTap" class="nav-item {{ currentPage === 'movies' ? 'active' : '' }}">
+        <Label text="🎬" class="nav-icon" />
+        <Label text="Movies" class="nav-label" />
+      </StackLayout>
+      
+      <StackLayout col="2" tap="onSeriesTap" class="nav-item {{ currentPage === 'series' ? 'active' : '' }}">
+        <Label text="📺" class="nav-icon" />
+        <Label text="Series" class="nav-label" />
+      </StackLayout>
+      
+      <StackLayout col="3" tap="onSearchTap" class="nav-item {{ currentPage === 'search' ? 'active' : '' }}">
+        <Label text="🔍" class="nav-icon" />
+        <Label text="Search" class="nav-label" />
+      </StackLayout>
+    </GridLayout>
+    
+  </GridLayout>
+</Page>

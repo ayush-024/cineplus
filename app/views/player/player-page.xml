@@ -1,0 +1,81 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="app-root">
+  <GridLayout rows="*, auto">
+    
+    <!-- Video Player -->
+    <VideoPlayer row="0" 
+                 src="{{ videoUrl }}" 
+                 class="video-player"
+                 autoplay="true"
+                 controls="true"
+                 finished="onVideoFinished"
+                 loadedMetadata="onVideoLoaded" />
+    
+    <!-- Player Controls -->
+    <StackLayout row="1" class="player-controls" visibility="{{ showControls ? 'visible' : 'collapsed' }}">
+      
+      <!-- Title -->
+      <Label text="{{ content.title || content.name }}" class="player-title" />
+      
+      <!-- Control Buttons -->
+      <StackLayout orientation="horizontal" class="control-buttons">
+        <Button text="⏮" tap="onPreviousTap" class="control-button" />
+        <Button text="{{ isPlaying ? '⏸' : '▶' }}" tap="onPlayPauseTap" class="control-button" />
+        <Button text="⏭" tap="onNextTap" class="control-button" />
+        <Button text="⚙" tap="onSettingsTap" class="control-button" />
+        <Button text="✕" tap="onCloseTap" class="control-button" />
+      </StackLayout>
+      
+      <!-- Progress Bar -->
+      <StackLayout class="progress-container">
+        <Slider value="{{ currentTime }}" maxValue="{{ duration }}" valueChange="onSeekChange" class="progress-slider" />
+        <StackLayout orientation="horizontal" class="time-labels">
+          <Label text="{{ currentTimeFormatted }}" class="time-label" />
+          <Label text="{{ durationFormatted }}" class="time-label" horizontalAlignment="right" />
+        </StackLayout>
+      </StackLayout>
+      
+    </StackLayout>
+    
+    <!-- Settings Modal -->
+    <GridLayout visibility="{{ showSettings ? 'visible' : 'collapsed' }}" class="settings-modal">
+      <StackLayout class="settings-content">
+        <Label text="Player Settings" class="settings-title" />
+        
+        <!-- Quality Settings -->
+        <StackLayout class="settings-section">
+          <Label text="Quality" class="settings-label" />
+          <StackLayout class="quality-options">
+            <Button text="Auto" tap="onQualityTap" class="{{ selectedQuality === 'auto' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="1080p" tap="onQualityTap" class="{{ selectedQuality === '1080p' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="720p" tap="onQualityTap" class="{{ selectedQuality === '720p' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="480p" tap="onQualityTap" class="{{ selectedQuality === '480p' ? 'primary-button' : 'secondary-button' }}" />
+          </StackLayout>
+        </StackLayout>
+        
+        <!-- Audio Settings -->
+        <StackLayout class="settings-section">
+          <Label text="Audio" class="settings-label" />
+          <StackLayout class="audio-options">
+            <Button text="English" tap="onAudioTap" class="{{ selectedAudio === 'en' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="Spanish" tap="onAudioTap" class="{{ selectedAudio === 'es' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="French" tap="onAudioTap" class="{{ selectedAudio === 'fr' ? 'primary-button' : 'secondary-button' }}" />
+          </StackLayout>
+        </StackLayout>
+        
+        <!-- Subtitle Settings -->
+        <StackLayout class="settings-section">
+          <Label text="Subtitles" class="settings-label" />
+          <StackLayout class="subtitle-options">
+            <Button text="Off" tap="onSubtitleTap" class="{{ selectedSubtitle === 'off' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="English" tap="onSubtitleTap" class="{{ selectedSubtitle === 'en' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="Spanish" tap="onSubtitleTap" class="{{ selectedSubtitle === 'es' ? 'primary-button' : 'secondary-button' }}" />
+            <Button text="French" tap="onSubtitleTap" class="{{ selectedSubtitle === 'fr' ? 'primary-button' : 'secondary-button' }}" />
+          </StackLayout>
+        </StackLayout>
+        
+        <Button text="Close" tap="onCloseSettingsTap" class="primary-button" />
+      </StackLayout>
+    </GridLayout>
+    
+  </GridLayout>
+</Page>

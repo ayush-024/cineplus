@@ -1,0 +1,36 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="app-root">
+  <GridLayout rows="auto, *">
+    
+    <!-- Header -->
+    <StackLayout row="0" class="header">
+      <Label text="TV Series" class="section-header" />
+      
+      <!-- Category Tabs -->
+      <StackLayout orientation="horizontal" class="category-tabs">
+        <Button text="Popular" tap="onPopularTap" class="{{ selectedCategory === 'popular' ? 'primary-button' : 'secondary-button' }}" />
+        <Button text="Top Rated" tap="onTopRatedTap" class="{{ selectedCategory === 'top_rated' ? 'primary-button' : 'secondary-button' }}" />
+        <Button text="On The Air" tap="onOnTheAirTap" class="{{ selectedCategory === 'on_the_air' ? 'primary-button' : 'secondary-button' }}" />
+      </StackLayout>
+    </StackLayout>
+
+    <!-- Content -->
+    <GridLayout row="1">
+      <!-- Loading -->
+      <ActivityIndicator busy="{{ isLoading }}" class="loading-container" />
+      
+      <!-- Series Grid -->
+      <CollectionView items="{{ series }}" visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+        <CollectionView.itemTemplate>
+          <GridLayout class="content-card" tap="onSeriesItemTap">
+            <Image src="{{ poster_path }}" class="poster-image" stretch="aspectFill" />
+            <StackLayout class="item-info" verticalAlignment="bottom">
+              <Label text="{{ name }}" class="item-title" maxLines="2" />
+              <Label text="⭐ {{ vote_average }}" class="item-rating" />
+            </StackLayout>
+          </GridLayout>
+        </CollectionView.itemTemplate>
+      </CollectionView>
+    </GridLayout>
+    
+  </GridLayout>
+</Page>

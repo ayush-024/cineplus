@@ -1,0 +1,42 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="app-root">
+  <GridLayout rows="auto, *">
+    
+    <!-- Search Header -->
+    <StackLayout row="0" class="search-header">
+      <Label text="Search" class="section-header" />
+      <TextField hint="Search movies and TV shows..." text="{{ searchQuery }}" class="search-bar" textChange="onSearchTextChange" />
+    </StackLayout>
+
+    <!-- Content -->
+    <GridLayout row="1">
+      <!-- Loading -->
+      <ActivityIndicator busy="{{ isLoading }}" class="loading-container" />
+      
+      <!-- No Results -->
+      <StackLayout visibility="{{ !isLoading && searchResults.length === 0 && searchQuery.length > 0 ? 'visible' : 'collapsed' }}" class="no-results">
+        <Label text="No results found" class="no-results-text" />
+      </StackLayout>
+      
+      <!-- Search Results -->
+      <CollectionView items="{{ searchResults }}" visibility="{{ !isLoading && searchResults.length > 0 ? 'visible' : 'collapsed' }}">
+        <CollectionView.itemTemplate>
+          <GridLayout class="search-result-item" tap="onSearchResultTap">
+            <Image src="{{ poster_path }}" class="result-poster" stretch="aspectFill" />
+            <StackLayout class="result-info">
+              <Label text="{{ title || name }}" class="result-title" maxLines="2" />
+              <Label text="{{ overview }}" class="result-overview" maxLines="3" />
+              <Label text="{{ media_type === 'movie' ? 'Movie' : 'TV Show' }} • ⭐ {{ vote_average }}" class="result-meta" />
+            </StackLayout>
+          </GridLayout>
+        </CollectionView.itemTemplate>
+      </CollectionView>
+      
+      <!-- Default State -->
+      <StackLayout visibility="{{ searchQuery.length === 0 ? 'visible' : 'collapsed' }}" class="default-state">
+        <Label text="🔍" class="search-icon" />
+        <Label text="Search for movies and TV shows" class="search-prompt" />
+      </StackLayout>
+    </GridLayout>
+    
+  </GridLayout>
+</Page>

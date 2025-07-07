@@ -1,0 +1,45 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="app-root">
+  <ScrollView>
+    <GridLayout rows="auto, *">
+      
+      <!-- Backdrop Header -->
+      <GridLayout row="0" class="detail-header">
+        <Image src="{{ content.backdrop_path }}" class="detail-backdrop" stretch="aspectFill" />
+        <StackLayout class="detail-overlay">
+          <Button text="← Back" tap="onBackTap" class="back-button" />
+          <StackLayout class="detail-actions" verticalAlignment="bottom">
+            <Button text="▶ Play" tap="onPlayTap" class="primary-button" />
+            <Button text="+ My List" tap="onAddToListTap" class="secondary-button" />
+          </StackLayout>
+        </StackLayout>
+      </GridLayout>
+
+      <!-- Content Info -->
+      <StackLayout row="1" class="detail-info">
+        <Label text="{{ content.title || content.name }}" class="detail-title" />
+        
+        <!-- Meta Information -->
+        <StackLayout class="meta-info">
+          <Label text="⭐ {{ content.vote_average }}/10" class="detail-meta" />
+          <Label text="{{ content.release_date || content.first_air_date }}" class="detail-meta" />
+          <Label text="{{ type === 'movie' ? 'Movie' : 'TV Show' }}" class="detail-meta" />
+        </StackLayout>
+
+        <!-- Overview -->
+        <Label text="{{ content.overview }}" class="detail-overview" />
+
+        <!-- Additional Info -->
+        <StackLayout class="additional-info" visibility="{{ isLoading ? 'collapsed' : 'visible' }}">
+          <Label text="Genres:" class="info-label" />
+          <StackLayout orientation="horizontal" class="genres-container">
+            <Label text="{{ genresText }}" class="genre-chip" />
+          </StackLayout>
+        </StackLayout>
+
+        <!-- Loading -->
+        <ActivityIndicator busy="{{ isLoading }}" class="loading-container" />
+      </StackLayout>
+      
+    </GridLayout>
+  </ScrollView>
+</Page>
