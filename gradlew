@@ -1,29 +1,10 @@
 #!/usr/bin/env sh
-##############################################################################
-#
-#  Gradle start-up script for UNIX-based OSes.
-#
-##############################################################################
 
-# set -e
+# Set environment
+APP_HOME="$(cd "$(dirname "$0")" && pwd)"
 
-# Determine directory of script
-PRG="$0"
-while [ -h "$PRG" ]; do
-  ls=`ls -ld "$PRG"`
-  link=`expr "$ls" : '.*-> \(.*\)$'`
-  if expr "$link" : '/.*' > /dev/null; then
-    PRG="$link"
-  else
-    PRG=`dirname "$PRG"`/"$link"
-  fi
-done
-
-SAVED="`pwd`"
-cd "`dirname \"$PRG\"`/" >/dev/null
-APP_HOME="`pwd -P`"
-cd "$SAVED" >/dev/null
-
+# JVM options (optional)
 DEFAULT_JVM_OPTS=""
 
-exec "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" "$@"
+# Run Gradle Wrapper
+exec java $DEFAULT_JVM_OPTS -jar "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" "$@"
