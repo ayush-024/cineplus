@@ -1,7 +1,7 @@
 pluginManagement {
     repositories {
         gradlePluginPortal()
-        google()
+        google()         //  REQUIRED for Android plugin
         mavenCentral()
     }
 }
@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "cineplus"     // 👈 Change to your actual project name if needed
-include(":app")                   // 👈 This line is required to include the `app/` module
+rootProject.name = "cineplus"
+include(":app")
