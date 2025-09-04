@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <include domain="root" />
+        <exclude domain="file" path="AppData"/>
+        <exclude domain="file" path="Cache"/>
+        <exclude domain="file" path="code_cache"/>
+        <exclude domain="database" path="app_webview"/>
+        <exclude domain="database" path="app_webview_hipri"/>
+        <exclude domain="database" path="app_webview_pri"/>
+        <exclude domain="database" path="geolocation"/>
+    </cloud-backup>
+    <device-transfer>
+        <include domain="root" />
+        <exclude domain="file" path="AppData"/>
+        <exclude domain="file" path="Cache"/>
+        <exclude domain="file" path="code_cache"/>
+        <exclude domain="database" path="app_webview"/>
+        <exclude domain="database" path="app_webview_hipri"/>
+        <exclude domain="database" path="app_webview_pri"/>
+        <exclude domain="database" path="geolocation"/>
+    </device-transfer>
+</data-extraction-rules>

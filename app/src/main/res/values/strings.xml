@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">CinePlus</string>
+    <string name="home">Home</string>
+    <string name="movies">Movies</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="search">Search</string>
+    
+    <!-- Home Fragment -->
+    <string name="trending_movies">Trending Movies</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="top_rated_movies">Top Rated Movies</string>
+    <string name="now_playing_movies">Now Playing</string>
+    <string name="popular_tv_shows">Popular TV Shows</string>
+    <string name="trending_tv_shows">Trending TV Shows</string>
+    
+    <!-- Movies Fragment -->
+    <string name="upcoming_movies">Upcoming Movies</string>
+    
+    <!-- TV Shows Fragment -->
+    <string name="top_rated_tv_shows">Top Rated TV Shows</string>
+    <string name="on_the_air_tv_shows">On The Air</string>
+    <string name="airing_today_tv_shows">Airing Today</string>
+    
+    <!-- Search Fragment -->
+    <string name="search_hint">Search movies and TV shows…</string>
+    <string name="search_prompt">Search for movies and TV shows</string>
+    <string name="no_results_found">No results found</string>
+    
+    <!-- Common -->
+    <string name="poster_image">Poster image</string>
+    <string name="error_loading_data">Error loading data</string>
+    <string name="retry">Retry</string>
+</resources>
